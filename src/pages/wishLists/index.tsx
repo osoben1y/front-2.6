@@ -1,11 +1,10 @@
 import { memo } from "react";
-import { Heart, Star, Banknote, ShoppingCart } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import type { IProduct } from "../../types";
 import { toggleWishes } from "../../lib/features/wishList";
 import type { RootState } from "../../lib";
+import { FaMoneyBill, FaStar } from "react-icons/fa";
 import { toggleLikes } from "../../lib/features/likesSlice";
-import { addItem } from "../../lib/features/cartSlice";
 
 const WisheLists = () => {
   const dispatch = useDispatch();
@@ -16,59 +15,55 @@ const WisheLists = () => {
     dispatch(toggleWishes(wish));
     dispatch(toggleLikes(wish.id));
   };
-
-  const createCart = (cart: IProduct) => {
-    dispatch(addItem(cart));
-  };
-
   return (
     <section className="mt-[70px]">
-      <div className="container grid grid-cols-5 gap-6 max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2">
+      <div className="container grid grid-cols-5 gap-5 max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2">
         {wishes.length > 0 ? (
           wishes.map((wish: IProduct) => (
             <div
               key={wish.id}
-              className="relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group"
+              className="relative hover:shadow-md cursor-pointer flex flex-col justify-between h-full"
             >
-              <button
-                className="absolute top-2 right-2 p-1.5 rounded-full bg-white shadow hover:scale-110 transition"
-                onClick={() => createWish(wish)}
-              >
-                <Heart
-                  size={18}
-                  fill={likes.includes(wish.id) ? "#ff0000" : "transparent"}
-                  stroke={likes.includes(wish.id) ? "#ff0000" : "black"}
-                />
-
-              </button>
-              <div className="overflow-hidden flex justify-center items-center h-48">
-                <img
-                  src={wish.image}
-                  alt={wish.description}
-                  className="max-h-full group-hover:scale-105 transition-transform duration-300"
-                />
+              <div className="absolute top-1 right-1 flex items-center justify-center pl-[3px] pr-[5px] py-[4px] rounded-[50%] bg-[white]">
+                <svg
+                  className="heart-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill={likes.includes(wish.id) ? "#8967F0" : "white"}
+                  stroke={likes.includes(wish.id) ? "#8967F0" : "black"}
+                  strokeWidth="2"
+                  onClick={() => createWish(wish)}
+                >
+                  <path d="M12 21C12 21 4 13.5 4 8.5C4 5.5 6.5 3 9.5 3C11.24 3 12.91 4 13.5 5.09C14.09 4 15.76 3 17.5 3C20.5 3 23 5.5 23 8.5C23 13.5 15 21 15 21H12Z" />
+                </svg>
               </div>
-              <div className="p-3 flex flex-col gap-1 flex-grow">
-                <p className="flex items-center gap-1.5 text-[#7F4DFF] font-semibold">
+              <div>
+                <img src={wish.image} alt="" />
+              </div>
+
+              <div className="p-1 flex flex-col h-full">
+                <p className="flex items-center gap-1.5 text-[#7F4DFF]">
                   {wish.newPrice}
-                  <Banknote size={16} />
+                  <FaMoneyBill />
                 </p>
-                <p className="text-gray-500 line-through text-sm">{wish.oldPrice}</p>
-                <span className="px-2 py-0.5 bg-yellow-300 text-xs rounded-md w-fit font-medium">
+                <p className="text-[#7E818C] text-[15px]">{wish.oldPrice}</p>
+                <span className="px-[5px] bg-[#FFFF00] text-[14px] w-[100px] rounded-md">
                   {wish.splitPrice} сум/мес
                 </span>
-                <p className="text-xs text-gray-800">
+                <p className="text-[12px] text-[#1F2026] font-medium pt-[3px]">
                   {wish.description}
                 </p>
-                <div className="flex items-center text-xs text-gray-500">
-                  <Star className="text-[#FFB54C] fill-[#FFB54C] mr-1" size={12} />
-                  {wish.rating} <span className="ml-1">({wish.review} отзывов)</span>
+                <div className="flex items-center mb-[8px]">
+                  <FaStar className="text-[#FFB54C] w-[11px] h-[10px]" />
+                  <p className="text-[14px] text-[#7E818C] px-1">
+                    {wish.rating}
+                    <span className="px-1">({wish.review} отзывов)</span>
+                  </p>
                 </div>
-                <button
-                  onClick={() => createCart(wish)}
-                  className="mt-auto flex items-center justify-center gap-1 bg-gradient-to-r from-[#7000FF] to-[#9b4dff] text-white rounded-lg py-1.5 text-sm hover:opacity-90 transition"
-                >
-                  <ShoppingCart size={16} /> В корзину
+                <button className="w-full h-8 bg-[#7000FF] text-[white] mt-auto rounded-[7px] cursor-pointer hover:opacity-85 transition-all">
+                  В корзину
                 </button>
               </div>
             </div>
@@ -82,5 +77,4 @@ const WisheLists = () => {
     </section>
   );
 };
-
 export default memo(WisheLists);
