@@ -1,0 +1,123 @@
+import type { IProduct } from "../types";
+import catEat from "../assets/hero/cat-eat.jpg";
+import catEat2 from "../assets/hero/cat-eat2.jpg";
+import catEat3 from "../assets/hero/cat-eat3.jpg";
+import colgate from "../assets/hero/colgate.jpg";
+import colorList from "../assets/hero/color-list.jpg";
+import fairyGreen from "../assets/hero/fairy-green.jpg";
+import fairyYellow from "../assets/hero/fairy-yellow.jpg";
+import lists from "../assets/hero/lists.jpg";
+import stick from "../assets/hero/stick.jpg";
+
+export const Products: IProduct[] = [
+  {
+    id: 1,
+    image: lists,
+    newPrice: 38940,
+    oldPrice: 40990,
+    splitPrice: 2903,
+    description: "Бумага листовая, для офисной техники SvetoCopy, A4",
+    rating: 4.9,
+    review: 34460,
+    stock: 25,
+  },
+  {
+    id: 2,
+    image: catEat,
+    newPrice: 24030,
+    oldPrice: 26700,
+    splitPrice: 1891,
+    description: "Корм ProBalance Sterilized для кастрированных котов и",
+    rating: 4.9,
+    review: 939,
+    stock: 45,
+  },
+  {
+    id: 3,
+    image: fairyGreen,
+    newPrice: 35140,
+    oldPrice: 36990,
+    splitPrice: 2620,
+    description: "Бумага листовая SvetoCopy ECO, A4, 80г/м2, 500 листов",
+    rating: 4.7,
+    review: 5788,
+    stock: 15,
+  },
+  {
+    id: 4,
+    image: catEat2,
+    newPrice: 4664,
+    oldPrice: 5300,
+    splitPrice: 375,
+    description: "Полнорационный корм для кастрированных котов и",
+    rating: 4.9,
+    review: 899,
+    stock: 66,
+  },
+  {
+    id: 5,
+    image: colorList,
+    newPrice: 13949,
+    oldPrice: 14840,
+    splitPrice: 1051,
+    description: "Цветная бумага Star, A4, 16 листов, 8 цветов",
+    rating: 5.0,
+    review: 455,
+    stock: 92,
+  },
+  {
+    id: 6,
+    image: catEat3,
+    newPrice: 15382,
+    oldPrice: 17480,
+    splitPrice: 1238,
+    description: "Корм консервированный для активных кошек 'ProBalance Active'",
+    rating: 4.8,
+    review: 1231,
+    stock: 37,
+  },
+  {
+    id: 7,
+    image: colgate,
+    newPrice: 17991,
+    oldPrice: 19990,
+    splitPrice: 1415,
+    description: "Зубная паста Colgate Triple Action, 150 мл",
+    rating: 5.0,
+    review: 2331,
+    stock: 24,
+  },
+  {
+    id: 8,
+    image: fairyYellow,
+    newPrice: 57000,
+    oldPrice: 60000,
+    splitPrice: 4250,
+    description: "Бумага SvetoCopy 80 г/м Офисная бумага (пачками и пакетами)",
+    rating: 4.7,
+    review: 1235,
+    stock: 67,
+  },
+  {
+    id: 9,
+    image: catEat2,
+    newPrice: 4664,
+    oldPrice: 5300,
+    splitPrice: 375,
+    description: "Корм для кошек ProBalance Light консервированный, 85 г",
+    rating: 5.0,
+    review: 119,
+    stock: 4,
+  },
+  {
+    id: 10,
+    image: stick,
+    newPrice: 6260,
+    oldPrice: 9990,
+    splitPrice: 471,
+    description: "Клей Glue Stick",
+    rating: 4.9,
+    review: 835,
+    stock: 10,
+  },
+];
